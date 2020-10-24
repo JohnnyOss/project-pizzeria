@@ -99,7 +99,7 @@
             /* remove class active for the active product */
             activeProduct.classList.remove('active');
           /* END: if the active product isn't the element of thisProduct */
-         }
+          }
           /* END LOOP: for each active product */
         }
         /* END: click event listener to trigger */
