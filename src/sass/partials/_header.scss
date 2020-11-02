@@ -34,3 +34,14 @@
   }
 
 }
+
+/* Media */
+
+@media (max-width: 767px) {
+  .header {
+    &__wrapper {
+      justify-content: space-between;
+      text-align: center;
+    }
+  }
+}

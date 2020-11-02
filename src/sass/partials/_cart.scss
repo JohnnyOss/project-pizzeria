@@ -157,3 +157,12 @@
   }
 
 }
+
+/* Media */
+
+@media (max-width: 767px) {
+  .cart {
+    position: relative;
+    margin: auto;
+  }
+}

@@ -125,3 +125,19 @@
   }
 
 }
+
+/* Media */
+
+@media (max-width: 767px) {
+  .product {
+    &__order {
+      //width: calc(100% - 150px);
+      width: 100%;
+    }
+
+    &__images {
+      width: 150px;
+      height: 150px;
+    }
+  }
+}
