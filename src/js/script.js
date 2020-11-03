@@ -400,6 +400,13 @@
         thisCart.totalNumber += product.amount;
       }
 
+      if (thisCart.totalNumber == 0){
+        thisCart.deliveryFee = 0;
+      }
+      else {
+        thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
+      }
+
       thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
       console.log(thisCart.totalNumber, thisCart.subtotalPrice, thisCart.totalPrice);
 
