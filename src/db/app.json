@@ -84,7 +84,7 @@
           "label": "Toppings",
           "type": "checkboxes",
           "options": {
-            "olives": {
+            "olivesPizza": {
               "label": "Olives",
               "price": 2,
               "default": true
@@ -117,7 +117,7 @@
               "label": "Bacon",
               "price": 3
             },
-            "corn": {
+            "cornPizza": {
               "label": "Corn",
               "price": 2
             },
@@ -191,7 +191,7 @@
               "price": 1,
               "default": true
             },
-            "olives": {
+            "olivesSalad": {
               "label": "Olives",
               "price": 1,
               "default": true
@@ -213,7 +213,7 @@
               "label": "Black pepper",
               "price": 1
             },
-            "corn": {
+            "cornSalad": {
               "label": "Corn",
               "price": 1
             }
@@ -226,7 +226,7 @@
   "event": [
     {
       "id": 1,
-      "date": "2019-01-01",
+      "date": "2020-11-12",
       "hour": "12:30",
       "table": 1,
       "repeat": false,
@@ -275,5 +275,15 @@
       "starters": ["lemonWater"]
     }
   ],
-  "booking": []
+  "booking": [
+    {
+      "id": 1,
+      "date": "2020-11-12",
+      "hour": "18:00",
+      "table": 1,
+      "duration": 4,
+      "ppl": 4,
+      "starters": ["water"]
+    }
+  ]
 }
