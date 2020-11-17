@@ -69,6 +69,7 @@ export const select = {
   },
   nav: {
     links: '.main-nav a',
+    homeLinks: '.home-menu-link a',
   },
 };
 
@@ -84,6 +85,11 @@ export const classNames = {
     loading: 'loading',
     tableBooked: 'booked',
     tableReserving: 'reserving',
+  },
+  slideshow: {
+    slide: 'mySlides',
+    dot: 'dot',
+    activeDot: ' active-dot'
   },
   nav: {
     active: 'active',

@@ -10,6 +10,7 @@ const app = {
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
+    thisApp.buttons = document.querySelectorAll(select.nav.homeLinks);
 
     const idFromHash = window.location.hash.replace('#/', '');
 
@@ -38,6 +39,19 @@ const app = {
         /* change URL hash */
         window.location.hash= '#/' + id;
 
+      });
+    }
+
+    for (let link of thisApp.buttons) {
+      link.addEventListener('click', function (event) {
+        const clickedElement = this;
+        event.preventDefault();
+
+        const id = clickedElement.getAttribute('href').replace('#', '');
+
+        thisApp.activatePage(id);
+
+        window.location.hash= '#/' + id;
       });
     }
   },
@@ -106,6 +120,29 @@ const app = {
     thisApp.booking = new Booking(bookingContainer);
   },
 
+  initShowSlides: function(){
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let i = '';
+      const slides = document.getElementsByClassName(classNames.slideshow.slide);
+      const dots = document.getElementsByClassName(classNames.slideshow.dot);
+
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = 'none';
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1;}
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(classNames.slideshow.activeDot, '');
+      }
+      slides[slideIndex-1].style.display = 'block';
+      dots[slideIndex-1].className += classNames.slideshow.activeDot;
+      setTimeout(showSlides, 3000);
+    }
+  },
+
   init: function(){
     const thisApp = this;
     //console.log('*** App starting ***');
@@ -119,6 +156,7 @@ const app = {
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
+    thisApp.initShowSlides();
   },
 };
 
