@@ -158,6 +158,10 @@
 
 }
 
+.error {
+  border: 2px solid $color-danger;
+}
+
 /* Media */
 
 @media (max-width: 767px) {

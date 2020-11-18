@@ -148,14 +148,16 @@ class Booking {
         table.classList.remove(classNames.booking.tableBooked);
       }
     }
+    console.log('thisBooking.booked', thisBooking.booked);
+    thisBooking.colorfulSlider();
   }
 
   reserveTableInitial(){
     const thisBooking = this;
     for (let table of thisBooking.dom.tables){
-      table.addEventListener('click', function(){
+      table.addEventListener('click', function(event){
         if (!table.classList.contains(classNames.booking.tableBooked)){
-          thisBooking.reserveTable();
+          thisBooking.reserveTable(event);
         }
       });
     }
@@ -174,7 +176,7 @@ class Booking {
     });
   }
 
-  reserveTable(){
+  reserveTable(event){
     const thisBooking = this;
     for (let table of thisBooking.dom.tables){
       table.classList.remove(classNames.booking.tableReserving);
@@ -230,6 +232,32 @@ class Booking {
     thisBooking.peopleAmount.value = '1';
 
   }
+
+  colorfulSlider(){
+    const thisBooking = this;
+    const bookedHours = thisBooking.booked[thisBooking.date];
+    const sliderColours = ['/*99*/ green 0%, green 100%']; // to prevent adding a color other than green for hours without any reserved table
+
+    thisBooking.dom.rangeSlider = thisBooking.dom.wrapper.querySelector('.rangeSlider');
+    const slider = thisBooking.dom.rangeSlider;
+
+    for (let bookedHour in bookedHours){
+      const hourStart = ((bookedHour -12) *100) / 12;
+      const hourEnd =  (((bookedHour -12) + 0.5) *100) / 12;
+      if (bookedHours[bookedHour].length <= 1) {
+        sliderColours.push('/*' + bookedHour + '*/ green ' + hourStart + '% ,green ' +  hourEnd + '%'); // /* */ added for correct sorting !
+      } else if (bookedHours[bookedHour].length == 2) {
+        sliderColours.push('/*' + bookedHour + '*/ orange ' + hourStart + '%, orange ' + hourEnd + '%');
+      } else if (bookedHours[bookedHour].length == 3) {
+        sliderColours.push('/*' + bookedHour + '*/ red ' + hourStart + '%, red ' + hourEnd + '%');
+      }
+    }
+
+    sliderColours.sort();
+    const coloursAll = sliderColours.join();
+    slider.style.background = 'linear-gradient(to right, ' + coloursAll + ')';
+  }
+
 
   render(element){
     const thisBooking = this;

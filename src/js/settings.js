@@ -80,6 +80,7 @@ export const classNames = {
   },
   cart: {
     wrapperActive: 'active',
+    inputError: 'error',
   },
   booking: {
     loading: 'loading',

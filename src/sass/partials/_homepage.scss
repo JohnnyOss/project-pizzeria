@@ -87,6 +87,8 @@ a {
 /* Slideshow */
 
 .slideshow-wrapper {
+  max-width: 1000px;
+  position: relative;
   margin: 48px auto 36px auto;
 }
 
@@ -168,10 +170,6 @@ a {
     background-size: cover;
     background-position: center;
 
-    &:hover .gallery-icons {
-      visibility: visible;
-    }
-
     .gallery-image {
       height: 190px;
 
@@ -190,9 +188,10 @@ a {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      visibility: hidden;
       text-align: center;
       z-index: 9;
+      opacity: 0;
+      transition: 1s;
 
       i {
         font-size: 24px;
@@ -206,6 +205,10 @@ a {
       }
     }
 
+    &:hover .gallery-icons {
+      opacity: 1;
+    }
+
     &:after {
       position: absolute;
       content: ' ';
@@ -215,12 +218,12 @@ a {
       border-radius: $radius;
       top: 0;
       left: 0;
-      opacity: 0.6;
-      visibility: hidden;
+      opacity: 0;
+      transition: all 1s;
     }
 
     &:hover:after {
-      visibility: visible;
+      opacity: .6;
     }
   }
 

@@ -50,7 +50,24 @@ class Cart{
 
     thisCart.dom.form.addEventListener('submit', function() {
       event.preventDefault();
-      thisCart.sendOrder();
+      if (thisCart.dom.phone.value.length >= 9 && thisCart.dom.address.value.length >= 9) {
+        thisCart.dom.phone.classList.remove(classNames.cart.inputError);
+        thisCart.dom.address.classList.remove(classNames.cart.inputError);
+        thisCart.sendOrder();
+      } else if (thisCart.dom.phone.value.length <= 9 && thisCart.dom.address.value.length >= 9){
+        thisCart.dom.phone.classList.add(classNames.cart.inputError);
+        thisCart.dom.address.classList.remove(classNames.cart.inputError);
+        alert('Invalid phone number, please correct it');
+      } else if (thisCart.dom.phone.value.length >= 9 && thisCart.dom.address.value.length <= 9){
+        thisCart.dom.phone.classList.remove(classNames.cart.inputError);
+        thisCart.dom.address.classList.add(classNames.cart.inputError);
+        alert('Invalid phone number, please correct it');
+      } else {
+        thisCart.dom.phone.classList.add(classNames.cart.inputError);
+        thisCart.dom.address.classList.add(classNames.cart.inputError);
+        alert('Invalid phone number and adress, please correct it');
+      }
+      //thisCart.sendOrder();
     });
   }
 
@@ -141,6 +158,12 @@ class Cart{
       .then(function(parsedResponse){
         console.log('parsed response: ', parsedResponse);
       });
+
+    thisCart.products = [];
+    thisCart.dom.productList.innerHTML = '';
+    thisCart.dom.phone.value = '';
+    thisCart.dom.address.value = '';
+    thisCart.update();
   }
 }
 
